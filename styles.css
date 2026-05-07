@@ -1,0 +1,157 @@
+:root {
+    --primary-color: #2b404d;
+    --secondary-color: #674985;
+    --background-color: #021216;
+    --text-color: #dddddd;
+    --border-color: #dddddd;
+    --success-color: #2f9246b5;
+    --pending-color: #656262;
+    --error-color: #ff4c4c;
+
+    --font-family: 'Arial', sans-serif;
+    --font-size: 1rem;
+
+    --border-size: 2px;
+    --border-radius: 0.5rem;
+    --border: var(--border-size) solid var(--border-color);
+}
+
+
+
+/* CONTAINERS */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.dashboard {
+    width: 100%;
+    max-width: 800px;
+    margin: 1.25rem auto;
+}
+
+/* for mobile devices */
+@media (max-width: 480px) {
+    .dashboard {
+        margin: 1.25rem 1rem;
+        width: auto;
+    }
+}
+
+/* for tablets and small laptops */
+@media (max-width: 768px) {
+    .dashboard {
+        margin: 1rem 1rem;
+        width: auto;
+    }
+}
+
+header {
+    text-align: left;
+    margin-bottom: 1.25rem;
+}
+section {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+}
+
+.status {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+
+
+/* UI COMPONENTS  */
+.status {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.status.error {
+    color: var(--error-color);
+}   
+ 
+.accordian {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    background-color: var(--primary-color);
+    overflow: clip;
+}
+
+.accordian-header {
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.accordian-header:hover {
+    background-color: var(--secondary-color);
+}
+
+.chevron {
+    font-size: 0.75rem;
+    transition: transform 160ms ease;
+}
+
+.accordion-details-panel {
+    display: none;
+    border-top: 1px solid var(--border-color);
+    padding: 0.8rem 1rem 1rem;
+}
+
+/* when the accordian is expanded, rotate the chevron and show the details panel */
+.accordian[data-expanded="true"] .chevron {
+    transform: rotate(180deg);
+}
+
+.accordian[data-expanded="true"] .accordion-details-panel {
+    display: block;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-color) ;
+}
+
+.badge-completed {
+    background-color: var(--success-color);
+}
+
+.badge-pending {
+    background-color: var(--pending-color);
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+}
+
+.todo-content {
+    margin-right: 0.5rem;
+}
