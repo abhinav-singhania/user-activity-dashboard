@@ -23,7 +23,6 @@ const cleanText = (text) => String(text ?? "").trim();
 
 
 // API functions
-
 /**
  * Fetches users from the API
  * 
