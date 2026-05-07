@@ -100,7 +100,7 @@ section {
 
 .accordian-header {
     width: 100%;
-    border: 0;
+    border: none;
     background-color: transparent;
     color: inherit;
     padding: 1.25rem 1rem;
