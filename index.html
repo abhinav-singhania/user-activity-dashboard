@@ -13,9 +13,9 @@
             <p>Welcome to your activity dashboard!</p>
         </header>
         <section>
-            <div class="users-container">
-                <div class="status" id="status">...Loading Users</div>
-                <div class="user-list" id="user-list"></div>
+            <div class="users-container" aria-live="polite">
+                <div class="status" id="status" role="status">...Loading Users</div>
+                <div class="user-list" id="user-list" aria-label="List of users"></div>
                 <!-- User cards will be dynamically inserted here -->
             </div>
         </section>

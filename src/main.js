@@ -126,16 +126,22 @@ const generateAccordianMarkup = (id, headerInfoTemplate) => {
     const accordianDetailsId = `details-${id}`;
     return `
         <button class="accordian-header" 
+            aria-controls="${accordianDetailsId}"
+            aria-expanded="false"
             data-user-id="${id}">
             ${headerInfoTemplate}
-            <span class="chevron">V</span>
+            <span class="chevron" aria-hidden="true">V</span>
         </button>
-        <div id="${accordianDetailsId}" class="accordion-details-panel" data-expanded="false"></div>
+        <div id="${accordianDetailsId}" 
+            class="accordion-details-panel" 
+            data-expanded="false">
+        </div>
     `;
 }
 
-const setAccordianExpand = (accordianPanel, expand) => {
+const setAccordianExpand = (accordianPanel, buttonPanel, expand) => {
     accordianPanel?.setAttribute("data-expanded", expand.toString());
+    buttonPanel?.setAttribute("aria-expanded", expand.toString());
 }
 
 // handles accordian click event, fetches and renders details if not already expanded, otherwise collapses the accordian
@@ -148,11 +154,11 @@ const handleAccordianToggle = async (event) => {
     const isExpanded = selectedAccordian.dataset.expanded === "true";
 
     if(isExpanded) {
-        setAccordianExpand(selectedAccordian, false);
+        setAccordianExpand(selectedAccordian, trigger, false);
         return;
     }
 
-    setAccordianExpand(selectedAccordian, true);
+    setAccordianExpand(selectedAccordian, trigger, true);
     detailsPanel.textContent = "Loading details...";
 
     try {
