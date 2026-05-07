@@ -1,26 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Activity Dashboard</title>
-    <link rel="stylesheet" href="./src/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
     <main class="dashboard">
-        <header>
-            <h1>User Activity Dashboard</h1>
-            <p>Welcome to your activity dashboard!</p>
-        </header>
-        <section>
-            <div class="users-container" aria-live="polite">
-                <div class="status" id="status" role="status">...Loading Users</div>
-                <div class="user-list" id="user-list" aria-label="List of users"></div>
-                <!-- User cards will be dynamically inserted here -->
-            </div>
-        </section>
+      <header>
+        <h1>User Activity Dashboard</h1>
+        <p>Welcome to your activity dashboard!</p>
+      </header>
+      <section>
+        <div class="users-container" aria-live="polite">
+          <div class="status" id="status" role="status">...Loading Users</div>
+          <div
+            class="user-list"
+            id="user-list"
+            aria-label="List of users">
+          </div>
+          <!-- User cards will be dynamically inserted here -->
+        </div>
+      </section>
     </main>
     <script src="./src/main.js"></script>
-
-</body>
+  </body>
 </html>

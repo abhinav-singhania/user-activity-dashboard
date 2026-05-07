@@ -61,6 +61,7 @@ header {
     text-align: left;
     margin-bottom: 1.25rem;
 }
+
 section {
     border: var(--border);
     border-radius: var(--border-radius);
@@ -88,8 +89,8 @@ section {
 
 .status.error {
     color: var(--error-color);
-}   
- 
+}
+
 .accordian {
     border: var(--border);
     border-radius: var(--border-radius);
@@ -116,7 +117,7 @@ section {
 }
 
 
-.accordian-header:hover {       
+.accordian-header:hover {
     background-color: var(--secondary-color);
 }
 
@@ -145,7 +146,7 @@ section {
     padding: 0.25rem 0.5rem;
     border-radius: 0.75rem;
     font-size: 0.75rem;
-    color: var(--text-color) ;
+    color: var(--text-color);
 }
 
 .badge-completed {
