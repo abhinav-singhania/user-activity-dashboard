@@ -21,8 +21,7 @@ Open `index.html` in your browser.
 
 
 ## Project Structure
-
 - `index.html` - App entry point
-- `styles.css` - Styling for dashboard
-- `main.js` - Data rendering, accordian behavior and service layer
+- `src/styles.css` - Styling for dashboard
+- `src/main.js` - Data rendering, accordian behavior and service layer
 
