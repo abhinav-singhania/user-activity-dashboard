@@ -11,8 +11,7 @@ const API_CACHE = new Map();
 const statusEle = document.querySelector("#status");
 const userListEle = document.querySelector("#user-list");
 
-// Utility functions
-
+// HELPER
 //handles loading, error and default
 const setStatus = (status, isError = false) => {
     statusEle.textContent = status;
@@ -23,7 +22,15 @@ const cleanText = (text) => String(text ?? "").trim();
 
 
 
-// service functions
+// API functions
+
+/**
+ * Fetches users from the API
+ * 
+ * @param {number} limit - The number of users to fetch (default is 10)
+ * @returns {Promise<Object>} - A promise that resolves to the users data
+ * @throws {Error} - Throws an error if the API request fails
+ */
 const fetchUsers = async (limit) => {
     let response = await fetch(`${API_BASE}/${USERS_URI}?limit=${limit || 10}`);
     if(!response.ok) {
@@ -32,6 +39,14 @@ const fetchUsers = async (limit) => {
     return response.json();
 };
 
+/**
+ * Fetches user-specific data (posts, carts, todos) from the API with caching
+ * 
+ * @param {number} userId - The ID of the user to fetch data for
+ * @param {string} type - The type of data to fetch (posts, carts, todos)
+ * @returns {Promise<Object>} - A promise that resolves to the user data
+ * @throws {Error} - Throws an error if the API request fails
+ */
 const fetchUserData = async (userId, type) => {
     // returned cached data if present to avoid unnecessary network calls
     if(API_CACHE.has(`${type}-${userId}`)) {
@@ -49,6 +64,13 @@ const fetchUserData = async (userId, type) => {
     return responseData;
 };
 
+/**
+ * Fetches both posts and cart data for a user in parallel
+ * 
+ * @param {number} userId - The ID of the user to fetch data for
+ * @returns {Promise<Array>} - A promise that resolves to an array containing posts and cart data
+ * @throws {Error} - Throws an error if any of the API requests fail
+ */
 const fetchUserPostsAndCart = async (userId) => {
     const postsPromise = fetchUserData(userId, USER_DATA_TYPE.POSTS);
     const cartPromise = fetchUserData(userId, USER_DATA_TYPE.CARTS);
@@ -104,11 +126,11 @@ const generateAccordianEl = (id, headerInfoTemplate) => {
 const generateAccordianMarkup = (id, headerInfoTemplate) => {
     const accordianDetailsId = `details-${id}`;
     return `
-        <div class="accordian-header" 
+        <button class="accordian-header" 
             data-user-id="${id}">
             ${headerInfoTemplate}
             <span class="chevron">V</span>
-        </div>
+        </button>
         <div id="${accordianDetailsId}" class="accordion-details-panel" data-expanded="false"></div>
     `;
 }

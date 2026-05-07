@@ -1,18 +1,19 @@
 :root {
-    --primary-color: #2b404d;
-    --secondary-color: #674985;
-    --background-color: #021216;
+    --primary-color: #141f3d9c;
+    --secondary-color: #515c7f;
+    --background-color: #020716;
     --text-color: #dddddd;
-    --border-color: #dddddd;
+    --border-color: #71768b;
     --success-color: #2f9246b5;
     --pending-color: #656262;
     --error-color: #ff4c4c;
+    --focus-color: #0008f9;
 
     --font-family: 'Arial', sans-serif;
     --font-size: 1rem;
 
-    --border-size: 2px;
-    --border-radius: 0.5rem;
+    --border-size: 0.5px;
+    --border-radius: 0.75rem;
     --border: var(--border-size) solid var(--border-color);
 }
 
@@ -74,7 +75,7 @@ section {
 .user-list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
 
@@ -92,22 +93,30 @@ section {
 .accordian {
     border: var(--border);
     border-radius: var(--border-radius);
-    margin-bottom: 1rem;
     background-color: var(--primary-color);
     overflow: clip;
 }
 
 .accordian-header {
-    padding: 1rem;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    color: inherit;
+    padding: 1.25rem 1rem;
+    font-size: 1rem;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.accordian-header:focus-visible {
+    outline: 2px solid var(--focus-color);
+    outline-offset: -2px;
+}
 
 
-.accordian-header:hover {
+.accordian-header:hover {       
     background-color: var(--secondary-color);
 }
 
